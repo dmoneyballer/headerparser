@@ -23,7 +23,13 @@ app.get("/", function (req, res) {
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
-
+//microservice below
+app.get("/api/whoami", function (req,res) {
+  let ip = req.connection.remoteAddress
+  let lang = req.get('Accept-Language')
+  let sys = req.get('User-Agent')
+  res.json({ipaddress: ip, language: lang, software: sys})
+})
 
 
 // listen for requests :)
